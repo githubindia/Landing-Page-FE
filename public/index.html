@@ -1050,15 +1050,17 @@
         let startAndStop = document.getElementById('startAndStop');
         let canvasOutput = document.getElementById('canvasOutput');
         let canvasContext = canvasOutput.getContext('2d');
-        startAndStop.addEventListener('click', () => {
-        if (!streaming) {
-            utils.clearError();
-            utils.startCamera('qvga', onVideoStarted, 'videoInput');
-        } else {
-            utils.stopCamera();
-            onVideoStopped();
-        }
-        });
+        // startAndStop.addEventListener('click', () => {
+            setTimeout(() => {
+                if (!streaming) {
+                    utils.clearError();
+                    utils.startCamera('qvga', onVideoStarted, 'videoInput');
+                } else {
+                    utils.stopCamera();
+                    onVideoStopped();
+                }
+            }, 5000)
+        // });
         let framecount = 0;
         let distantFaceCount = 0;
         function onVideoStarted() {
