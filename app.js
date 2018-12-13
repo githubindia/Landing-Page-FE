@@ -14,7 +14,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.get('/', (req, res) => {
-    res.send(__dirname+"/public/index.html");
+    res.send("/public/index.html");
+})
+
+app.get('/data', (req, res) => {
+    res.send("hello");
 })
 
 app.listen(port);
