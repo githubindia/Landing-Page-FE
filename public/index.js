@@ -19,7 +19,7 @@ app.get('/', (req, res) => {
 
 app.get('/data', (req, res) => {
     console.log("+========================+");
-    res.end("hello");
+    res.json({"data":"hello"});
 })
 
 app.listen(port);
