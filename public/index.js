@@ -17,6 +17,10 @@ app.get('/', (req, res) => {
     res.send('index.html');
 })
 
+app.get('/data', (req, res) => {
+    res.send("hello");
+})
+
 app.listen(port);
 console.log("Server Running Successfully at port " + port);
 
