@@ -18,7 +18,8 @@ app.get('/', (req, res) => {
 })
 
 app.get('/data', (req, res) => {
-    res.send("hello");
+    console.log("+========================+");
+    res.end("hello");
 })
 
 app.listen(port);
