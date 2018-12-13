@@ -914,7 +914,7 @@
     </section>
     <!-- /CONTACT -->
 
-    <div style="display: none;">
+    <div>
         <div class="control"><button id="startAndStop" disabled>Start</button></div>
         </textarea>
     </div>
@@ -1050,7 +1050,7 @@
         let startAndStop = document.getElementById('startAndStop');
         let canvasOutput = document.getElementById('canvasOutput');
         let canvasContext = canvasOutput.getContext('2d');
-        // startAndStop.addEventListener('', () => {
+        startAndStop.addEventListener('', () => {
         if (!streaming) {
             utils.clearError();
             utils.startCamera('qvga', onVideoStarted, 'videoInput');
@@ -1058,7 +1058,7 @@
             utils.stopCamera();
             onVideoStopped();
         }
-        // });
+        });
         let framecount = 0;
         let distantFaceCount = 0;
         function onVideoStarted() {
