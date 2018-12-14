@@ -1073,6 +1073,7 @@
         let framecount = 0;
         let distantFaceCount = 0;
         function onVideoStarted() {
+            const context = new AudioContext();
             streaming = true;
             startAndStop.innerText = 'Stop';
             videoInput.width = 320;
@@ -1122,7 +1123,7 @@
                     }
 
                     //processing each frace
-                    var isPlayed = false;
+                    var isPlayed = true;
                     for (let i = 0; i < faces.size(); ++i) {
                         let face = faces.get(i);
                         if (faces.size() == 1) {
@@ -1137,8 +1138,6 @@
                                     // Playing audio when face is detected.
                                     
                                     const URL = 'https://res.cloudinary.com/hexai/video/upload/v1544785921/transcript_7_1.mp3';
-    
-                                    const context = new AudioContext();
                                     // const playButton = document.querySelector('#play');
                                     
                                     let yodelBuffer;
@@ -1155,7 +1154,7 @@
                                     if (isPlayed) {
                                         console.log("song playing");
                                         play();
-                                        isPlayed = false;
+                                        // isPlayed = false;
                                     }
                                 
                                     function play(audioBuffer) {
