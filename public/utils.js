@@ -115,7 +115,7 @@ function Utils(errorOutputId) { // eslint-disable-line no-unused-vars
 
     this.startCamera = function(resolution, callback, videoId) {
         const constraints = {
-            'qvga': {width: {exact: 320}, height: {exact: 240}},
+            'qvga': {width: {exact: 640}, height: {exact: 480}},
             'vga': {width: {exact: 640}, height: {exact: 480}}};
         let video = document.getElementById(videoId);
         if (!video) {
