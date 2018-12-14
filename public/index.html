@@ -1150,7 +1150,6 @@
                             // console.log(face.width, face.height);
                             if (face.width > 100) {
                                 console.log("WWWWWWWWW");
-                                isplayed = true;
                                 console.log("tracking face in frame", framecount++);
                                 if (framecount == 10) {
 
@@ -1178,8 +1177,6 @@
                                     var img = canvas.toDataURL("image/png");
                                     // save this img or send it to S3.
                                 }
-                            } else {
-                                isplayed = false;
                             }
 
 
