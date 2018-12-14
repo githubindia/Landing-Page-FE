@@ -1069,6 +1069,7 @@
             // playButton.disabled = false;
             yodelBuffer = audioBuffer;
             console.log("Audio Loaded =========");
+            console.log(yodelBuffer);
         });
         let utils = new Utils('errorMessage');
         // utils.loadCode('codeSnippet', 'codeEditor');
@@ -1157,7 +1158,7 @@
                                     // playButton.onclick = () => play(yodelBuffer);
                                     if (isPlayed) {
                                         console.log("song playing");
-                                        play();
+                                        play(yodelBuffer);
                                         // isPlayed = false;
                                     }
                                 
