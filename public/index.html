@@ -1073,7 +1073,22 @@
         let framecount = 0;
         let distantFaceCount = 0;
         function onVideoStarted() {
+            // Loading AudioContext.
             const context = new AudioContext();
+
+            const URL = 'https://res.cloudinary.com/hexai/video/upload/v1544785921/transcript_7_1.mp3';
+            // const playButton = document.querySelector('#play');
+            
+            let yodelBuffer;
+        
+            window.fetch(URL)
+            .then(response => response.arrayBuffer())
+            .then(arrayBuffer => context.decodeAudioData(arrayBuffer))
+            .then(audioBuffer => {
+                // playButton.disabled = false;
+                yodelBuffer = audioBuffer;
+            });
+    
             streaming = true;
             startAndStop.innerText = 'Stop';
             videoInput.width = 320;
@@ -1135,20 +1150,7 @@
                                 console.log("tracking face in frame", framecount++);
                                 if (framecount == 10) {
 
-                                    // Playing audio when face is detected.
-                                    
-                                    const URL = 'https://res.cloudinary.com/hexai/video/upload/v1544785921/transcript_7_1.mp3';
-                                    // const playButton = document.querySelector('#play');
-                                    
-                                    let yodelBuffer;
-                                
-                                    window.fetch(URL)
-                                    .then(response => response.arrayBuffer())
-                                    .then(arrayBuffer => context.decodeAudioData(arrayBuffer))
-                                    .then(audioBuffer => {
-                                        // playButton.disabled = false;
-                                        yodelBuffer = audioBuffer;
-                                    });
+                                    // Playing audio when face is detected
                                     
                                     // playButton.onclick = () => play(yodelBuffer);
                                     if (isPlayed) {
