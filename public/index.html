@@ -1108,6 +1108,8 @@
             classifier.load('haarcascade_frontalface_default.xml');
             const FPS = 15;
 
+            var isPlayed = false;
+            var isFace = false
             function processVideo() {
                 try {
                     if (!streaming) {
@@ -1141,14 +1143,14 @@
                     }
 
                     //processing each frace
-                    var isPlayed = true;
                     for (let i = 0; i < faces.size(); ++i) {
                         let face = faces.get(i);
                         if (faces.size() == 1) {
-
+                            isFace = true;
                             //estimating user distance from kiosk
                             // console.log(face.width, face.height);
                             if (face.width > 100) {
+                                isPlayed = true
                                 console.log("WWWWWWWWW");
                                 console.log("tracking face in frame", framecount++);
                                 if (framecount == 10) {
@@ -1156,10 +1158,10 @@
                                     // Playing audio when face is detected
                                     
                                     // playButton.onclick = () => play(yodelBuffer);
-                                    if (isPlayed) {
+                                    if (isPlayed && isFace) {
                                         console.log("song playing");
                                         play(yodelBuffer);
-                                        isPlayed = false;
+                                        isFace = false;
                                     }
                                 
                                     function play(audioBuffer) {
