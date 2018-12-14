@@ -1108,7 +1108,7 @@
             classifier.load('haarcascade_frontalface_default.xml');
             const FPS = 15;
 
-            var isPlayed = false;
+            var isPlayed = true;
             var isFace = false
             function processVideo() {
                 try {
@@ -1132,7 +1132,10 @@
                     // draw faces.
 
                     //reseting framecount if user is not not stabilized
-                    if (faces.size() == 0) { framecount = 0 };
+                    if (faces.size() == 0) { 
+                        framecount = 0;
+                        isPlayed = true;
+                    };
 
                     //reseting framecount if multiple people are detected
                     if (faces.size() > 1) {
