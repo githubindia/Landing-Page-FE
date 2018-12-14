@@ -1064,8 +1064,8 @@
         function onVideoStarted() {
             streaming = true;
             startAndStop.innerText = 'Stop';
-            videoInput.width = 640;
-            videoInput.height = 480;
+            videoInput.width = 320;
+            videoInput.height = 240;
             // utils.executeCode('codeEditor');
             let video = document.getElementById('videoInput');
             let src = new cv.Mat(video.height, video.width, cv.CV_8UC4);
