@@ -1153,11 +1153,14 @@
                                     
                                     // playButton.onclick = () => play(yodelBuffer);
                                     if (isPlayed) {
+                                        console.log("song playing");
                                         play();
                                         isPlayed = false;
                                     }
                                 
                                     function play(audioBuffer) {
+                                        console.log(audioBuffer);
+                                        console.log("==============");
                                     const source = context.createBufferSource();
                                     source.buffer = audioBuffer;
                                     source.connect(context.destination);
