@@ -923,10 +923,10 @@
         <table cellpadding="0" cellspacing="0" width="0" border="0">
             <tr>
                 <td>
-                    <video id="videoInput" width=320 height=240></video>
+                    <video id="videoInput" width=640 height=480></video>
                 </td>
                 <td>
-                    <canvas id="canvasOutput" width=320 height=240></canvas>
+                    <canvas id="canvasOutput" width=640 height=480></canvas>
                 </td>
                 <td></td>
                 <td></td>
@@ -1064,8 +1064,8 @@
         function onVideoStarted() {
             streaming = true;
             startAndStop.innerText = 'Stop';
-            videoInput.width = videoInput.videoWidth;
-            videoInput.height = videoInput.videoHeight;
+            videoInput.width = 640;
+            videoInput.height = 480;
             // utils.executeCode('codeEditor');
             let video = document.getElementById('videoInput');
             let src = new cv.Mat(video.height, video.width, cv.CV_8UC4);
@@ -1076,7 +1076,7 @@
             let classifier = new cv.CascadeClassifier();
             // load pre-trained classifiers
             classifier.load('haarcascade_frontalface_default.xml');
-            const FPS = 10;
+            const FPS = 15;
 
             function processVideo() {
                 try {
@@ -1134,7 +1134,7 @@
                         }
                         let point1 = new cv.Point(face.x, face.y);
                         let point2 = new cv.Point(face.x + face.width, face.y + face.height);
-                        // cv.rectangle(dst, point1, point2, [255, 0, 0, 255]);
+                        cv.rectangle(dst, point1, point2, [255, 0, 0, 255]);
                     }
                     cv.imshow('canvasOutput', dst);
                     // schedule the next one.
