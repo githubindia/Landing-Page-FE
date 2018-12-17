@@ -69,6 +69,7 @@
                         <li><a data-scroll href="#sponsers">Sponsors</a></li>
                         <li><a data-scroll href="#contact">Contact</a></li>
                         <li class="hidden"><a href="#sec_1">Home</a></li>
+                        <li style="margin: 25px 10px"><button id="startAndStop" disabled>START</button></li>
                     </ul>
                 </div>
             </nav>
@@ -923,15 +924,15 @@
         <table cellpadding="0" cellspacing="0" width="0" border="0">
             <tr>
                 <td>
-                    <video id="videoInput" width=640 height=480></video>
+                    <video style="display: none;" id="videoInput" width=320 height=240></video>
                 </td>
                 <td>
-                    <canvas id="canvasOutput" width=640 height=480></canvas>
+                    <canvas id="canvasOutput" width=240 height=240></canvas>
                 </td>
                 <td></td>
                 <td></td>
             </tr>
-            <tr>
+            <!-- <tr>
                 <td>
                     <div class="caption">videoInput</div>
                 </td>
@@ -940,13 +941,24 @@
                 </td>
                 <td></td>
                 <td></td>
-            </tr>
+            </tr> -->
         </table>
     </div>
-    <div>
+    <!-- <div class="wrapper">
+        <input class="hidden-trigger" id="toogle" type="checkbox">
+        <label class="circle" for="toogle">
+           <img class="plusminus" src="https://ssl.gstatic.com/bt/C3341AA7A1A076756462EE2E5CD71C11/2x/btw_ic_speeddial_white_24dp_2x.png" alt="" />
+        </label>
+
+        
+        
+         </div> -->
+
+         
+    <!-- <div>
         <iframe allow="microphone;" width="350" height="430" src="https://console.dialogflow.com/api-client/demo/embedded/22c5ba10-ce4d-41f1-af6b-7c99e26abbe7">
         </iframe>
-    </div>
+    </div> -->
 
     <!--FOOTER-->
     <footer>
@@ -1089,7 +1101,7 @@
 
 
             streaming = true;
-            startAndStop.innerText = 'Stop';
+            startAndStop.innerText = 'STOP';
             videoInput.width = 320;
             videoInput.height = 240;
             // utils.executeCode('codeEditor');
@@ -1131,6 +1143,7 @@
                     if (faces.size() == 0) {
                         framecount = 0;
                         isPlayed = true;
+                        recognition.stop();
                     };
 
                     //reseting framecount if multiple people are detected
@@ -1158,6 +1171,7 @@
                                     // playButton.onclick = () => play(yodelBuffer);
                                     if (isPlayed && isFace) {
                                         console.log("song playing");
+                                        recognition.start();
                                         play(yodelBuffer);
                                         isPlayed = false;
                                     }
@@ -1171,7 +1185,7 @@
                                     }
                                     console.log("Taking snap after", framecount);
                                     framecount = 0;
-                                    alert("took a snap");
+                                    // alert("took a snap");
                                     var canvas = document.getElementById("canvasOutput");
                                     var img = canvas.toDataURL("image/png");
                                     // save this img or send it to S3.
@@ -1196,7 +1210,7 @@
         function onVideoStopped() {
             streaming = false;
             canvasContext.clearRect(0, 0, canvasOutput.width, canvasOutput.height);
-            startAndStop.innerText = 'Start';
+            startAndStop.innerText = 'START';
         }
         utils.loadOpenCv(() => {
             let faceCascadeFile = 'haarcascade_frontalface_default.xml';

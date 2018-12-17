@@ -83,7 +83,7 @@ try {
     if (noteContent.length) {
       noteContent += ' ';
     }
-    recognition.start();
+    // recognition.start();
   // });
   
   

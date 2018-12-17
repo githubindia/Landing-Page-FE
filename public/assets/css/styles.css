@@ -2196,3 +2196,9 @@ ul.legals li:last-child::after {
 .ui-select {
 	display:none;
 }
+
+#videoOutput {
+	position: fixed;
+	right: 0;
+	bottom: 0;
+}
